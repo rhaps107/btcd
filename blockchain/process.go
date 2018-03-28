@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
-	"github.com/btcsuite/btcd/database"
-	"github.com/btcsuite/btcutil"
+	"github.com/rhaps107/btcd/chaincfg/chainhash"
+	"github.com/rhaps107/btcd/database"
+	"github.com/rhaps107/btcutil"
 )
 
 // BehaviorFlags is a bitmask defining tweaks to the normal behavior when

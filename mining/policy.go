@@ -5,9 +5,9 @@
 package mining
 
 import (
-	"github.com/btcsuite/btcd/blockchain"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
+	"github.com/rhaps107/btcd/blockchain"
+	"github.com/rhaps107/btcd/wire"
+	"github.com/rhaps107/btcutil"
 )
 
 const (

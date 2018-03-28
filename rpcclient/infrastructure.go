@@ -23,9 +23,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcd/btcjson"
-	"github.com/btcsuite/go-socks/socks"
-	"github.com/btcsuite/websocket"
+	"github.com/rhaps107/btcd/btcjson"
+	"github.com/rhaps107/go-socks/socks"
+	"github.com/rhaps107/websocket"
 )
 
 var (
@@ -310,8 +310,6 @@ func (c *Client) handleMessage(msg []byte) {
 	// Attempt to unmarshal the message as either a notification or
 	// response.
 	var in inMessage
-	in.rawResponse = new(rawResponse)
-	in.rawNotification = new(rawNotification)
 	err := json.Unmarshal(msg, &in)
 	if err != nil {
 		log.Warnf("Remote server sent invalid message: %v", err)

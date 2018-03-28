@@ -7,7 +7,7 @@ package blockchain
 import (
 	"testing"
 
-	"github.com/btcsuite/btcutil"
+	"github.com/rhaps107/btcutil"
 )
 
 // TestMerkle tests the BuildMerkleTreeStore API.
