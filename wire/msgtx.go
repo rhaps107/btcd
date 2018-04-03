@@ -684,11 +684,18 @@ func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error
 		return err
 	}
 
+	// nversion
+	err = binarySerializer.PutUint32(w, littleEndian, uint32(0x03C48270))
+	if err != nil {
+		return err
+	}
+
 	// If the encoding version is set to WitnessEncoding, and the Flags
 	// field for the MsgTx aren't 0x00, then this indicates the transaction
 	// is to be encoded using the new witness inclusionary structure
 	// defined in BIP0144.
 	doWitness := enc == WitnessEncoding && msg.HasWitness()
+
 	if doWitness {
 		// After the txn's Version field, we include two additional
 		// bytes specific to the witness encoding. The first byte is an
@@ -740,7 +747,19 @@ func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error
 		}
 	}
 
-	return binarySerializer.PutUint32(w, littleEndian, msg.LockTime)
+	err = binarySerializer.PutUint32(w, littleEndian, msg.LockTime)
+	if err != nil {
+		return err
+	}
+
+	// expiry height
+	err = binarySerializer.PutUint32(w, littleEndian, uint32(0))
+	if err != nil {
+		return err
+	}
+
+	count = uint64(0)
+	return WriteVarInt(w, pver, count)
 }
 
 // HasWitness returns false if none of the inputs within the transaction
